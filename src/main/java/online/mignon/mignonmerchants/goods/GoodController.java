@@ -10,9 +10,15 @@ import java.util.List;
 @RequestMapping("/ap1/v1/goods")
 public class GoodController {
 
+    private final  GoodService service;
+
     @Autowired
-    GoodService service;
-    @GetMapping
+    public GoodController(GoodService service) {
+        this.service = service;
+    }
+    @Autowired
+
+    @GetMapping("/")
     public ResponseEntity<List<Goods>> getAllGoods(){
         return ResponseEntity.ok(service.getAllGoods());
     }
